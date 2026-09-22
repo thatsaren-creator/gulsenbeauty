@@ -1,836 +1,243 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BG Natura Güzellik & Bakım Salonu</title>
-  <meta name="description" content="BG Natura Güzellik Salonu - Profesyonel cilt bakımı, kalıcı makyaj, kaş tasarımı ve güzellik hizmetleri.">
-
-  <!-- Google Fonts & Preconnect -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BG Natura Güzellik Salonu | İzmir Güzellik Merkezi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ==========================================
-       1. VARIABLES & BASE STYLES
-       ========================================== */
-    :root {
-      --bg: #FAFAFA;
-      --surface: #FFFFFF;
-      --text: #1C1917;
-      --muted: #78716C;
-      --border: #E7E5E4;
-      --brand: #292524;
-      --accent: #D97706;
-      --accent-soft: #FEF3C7;
-      --radius: 16px;
-      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
-      --font-heading: 'Playfair Display', Georgia, serif;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
-      font-family: var(--font-body);
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* ==========================================
-       2. UTILITIES & COMPONENTS
-       ========================================== */
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-
-    .section-desc {
-      text-align: center;
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto 48px auto;
-      font-size: 1.05rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: 99px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: var(--transition);
-      border: none;
-      background: var(--brand);
-      color: #fff;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    .btn-accent {
-      background: #25D366; /* WA Green */
-      color: #fff;
-    }
-
-    .btn-accent:hover {
-      background: #1EBE5D;
-    }
-
-    /* Preloader */
-    #preloader {
-      position: fixed;
-      inset: 0;
-      background: var(--surface);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-    #preloader.done {
-      opacity: 0;
-      visibility: hidden;
-    }
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 3px solid var(--border);
-      border-top-color: var(--brand);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ==========================================
-       3. NAVIGATION
-       ========================================== */
-    .nav-wrap {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 20px 0;
-      transition: var(--transition);
-    }
-    .nav-wrap.scrolled {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .brand-logo {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-link {
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: var(--muted);
-      transition: var(--transition);
-      position: relative;
-    }
-    .nav-link:hover, .nav-link.active {
-      color: var(--text);
-    }
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text);
-      margin: 5px 0;
-      transition: var(--transition);
-    }
-
-    /* Mobile Menu */
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      background: var(--surface);
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      transform: translateY(-100%);
-      transition: var(--transition);
-    }
-    .mobile-menu.open {
-      transform: translateY(0);
-    }
-    .mobile-menu a {
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-
-    /* ==========================================
-       4. HERO SECTION
-       ========================================== */
-    .hero {
-      padding: 160px 0 100px 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .hero-content h1 {
-      font-family: var(--font-heading);
-      font-size: 3.5rem;
-      line-height: 1.15;
-      margin-bottom: 20px;
-    }
-    .hero-content p {
-      font-size: 1.15rem;
-      color: var(--muted);
-      margin-bottom: 32px;
-    }
-    .hero-img {
-      position: relative;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    }
-    .hero-img img {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-    }
-
-    /* Status Indicator */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #F5F5F4;
-      padding: 6px 14px;
-      border-radius: 99px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-bottom: 20px;
-      border: 1px solid var(--border);
-    }
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-    .dot-g { background: #22C55E; box-shadow: 0 0 8px #22C55E; }
-    .dot-r { background: #EF4444; }
-
-    /* ==========================================
-       5. GALLERY & BEFORE/AFTER
-       ========================================== */
-    .gallery-section {
-      padding: 100px 0;
-      background: var(--surface);
-    }
-
-    /* Before / After Slider */
-    .ba-card {
-      background: var(--bg);
-      border-radius: var(--radius);
-      padding: 32px;
-      border: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-      margin-top: 40px;
-    }
-
-    .ba-tabs {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 32px;
-    }
-    .ba-tab {
-      padding: 10px 20px;
-      border-radius: 99px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      cursor: pointer;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-    .ba-tab.active {
-      background: var(--brand);
-      color: #fff;
-      border-color: var(--brand);
-    }
-
-    .ba-slider {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      border-radius: calc(var(--radius) - 4px);
-      overflow: hidden;
-      user-select: none;
-      touch-action: pan-y;
-      --pos: 50%;
-    }
-    .ba-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .ba-before-wrap {
-      position: absolute;
-      inset: 0;
-      width: var(--pos);
-      overflow: hidden;
-      z-index: 2;
-    }
-    .ba-handle {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: var(--pos);
-      width: 2px;
-      background: #FFF;
-      z-index: 3;
-      transform: translateX(-50%);
-      cursor: ew-resize;
-    }
-    .ba-handle-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #FFF;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .ba-info h3 {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-    }
-    .ba-info p {
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-    .ba-points {
-      list-style: none;
-      margin-bottom: 28px;
-    }
-    .ba-points li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      font-size: 0.95rem;
-    }
-    .ba-points svg {
-      width: 18px;
-      height: 18px;
-      stroke: var(--brand);
-      stroke-width: 2.5;
-      fill: none;
-    }
-
-    /* ==========================================
-       6. REVIEWS (REVIEWS SECTION)
-       ========================================== */
-    .reviews-section {
-      padding: 100px 0;
-    }
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-    .review-card {
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 28px;
-      border: 1px solid var(--border);
-    }
-    .stars {
-      display: flex;
-      gap: 4px;
-      margin-bottom: 16px;
-    }
-    .star {
-      width: 18px;
-      height: 18px;
-      fill: #F59E0B;
-    }
-    .star.st-off { fill: #E5E7EB; }
-    .review-text {
-      color: var(--text);
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-    }
-    .review-author {
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    /* ==========================================
-       7. REVEAL ANIMATIONS & FOOTER
-       ========================================== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    footer {
-      background: var(--brand);
-      color: #FFF;
-      padding: 60px 0 30px 0;
-    }
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .footer-bottom {
-      padding-top: 30px;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #A8A29E;
-    }
-
-    /* ==========================================
-       8. RESPONSIVE DESIGN
-       ========================================== */
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 120px;
-      }
-      .ba-card {
-        grid-template-columns: 1fr;
-      }
-      .nav-links {
-        display: none;
-      }
-      .hamburger {
-        display: block;
-      }
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
   </style>
 </head>
-<body>
+<body class="bg-white text-gray-800 antialiased selection:bg-rose-500 selection:text-white">
 
-  <!-- Preloader -->
-  <div id="preloader">
-    <div class="spinner"></div>
-  </div>
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-rose-100/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 text-2xl font-bold tracking-tight text-gray-900">
+          <span class="text-rose-600">BG NATURA</span>
+          <span class="text-xs font-semibold px-2 py-1 bg-rose-50 text-rose-600 rounded-md uppercase tracking-wider">Güzellik</span>
+        </a>
 
-  <!-- Navigation -->
-  <header class="nav-wrap" id="nav">
-    <div class="container nav-container">
-      <a href="#" class="brand-logo">BG Natura</a>
-      <ul class="nav-links">
-        <li><a href="#hizmetler" class="nav-link" data-sec="hizmetler">Hizmetler</a></li>
-        <li><a href="#galeri" class="nav-link" data-sec="galeri">Galeri</a></li>
-        <li><a href="#yorumlar" class="nav-link" data-sec="yorumlar">Yorumlar</a></li>
-        <li><a href="#iletisim" class="nav-link" data-sec="iletisim">İletişim</a></li>
-      </ul>
-      <button class="btn btn-accent" data-wa="Genel">Randevu Al</button>
-      <button class="hamburger" id="hamburger" aria-label="Menü">
-        <span></span>
-        <span></span>
-      </button>
+        <!-- Desktop Nav Links -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+          <a href="#hero" class="hover:text-rose-600 transition duration-200">Ana Sayfa</a>
+          <a href="#islemler" class="hover:text-rose-600 transition duration-200">İşlemlerimiz</a>
+          <a href="#hakkimizda" class="hover:text-rose-600 transition duration-200">Hakkımızda</a>
+          <a href="#iletisim" class="hover:text-rose-600 transition duration-200">İletişim</a>
+        </nav>
+
+        <!-- CTA Button -->
+        <div class="hidden md:flex items-center">
+          <a href="#randevu" class="px-5 py-2.5 bg-rose-600 text-white font-medium text-sm rounded-xl shadow-md shadow-rose-200 hover:bg-rose-700 transition duration-300">
+            Randevu Al
+          </a>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#hizmetler">Hizmetler</a>
-    <a href="#galeri">Galeri</a>
-    <a href="#yorumlar">Yorumlar</a>
-    <a href="#iletisim">İletişim</a>
-    <button class="btn btn-accent" data-wa="Mobil Menü">Randevu Al</button>
-  </div>
-
-  <main>
-    <!-- Hero Section -->
-    <section class="container hero">
-      <div class="hero-content reveal">
-        <div id="openStatus" class="status-badge">
-          <span class="dot dot-g"></span> Yükleniyor...
-        </div>
-        <h1>Doğal Güzelliğinizi Ön Plana Çıkarın</h1>
-        <p>BG Natura'da kişiye özel cilt bakımı, uzman kaş tasarımı ve profesyonel estetik dokunuşlarla yenilenin.</p>
-        <button class="btn btn-accent" data-wa="Hero Randevu">WhatsApp ile İletişime Geçin</button>
-      </div>
-      <div class="hero-img reveal">
-        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1000&auto=format&fit=crop" alt="Cilt Bakımı Uygulaması">
-      </div>
-    </section>
-
-    <!-- Gallery / Before & After Section -->
-    <section class="gallery-section" id="galeri">
-      <div class="container">
-        <h2 class="section-title reveal">Uygulama Sonuçlarımız</h2>
-        <p class="section-desc reveal">Salonumuzda gerçekleştirdiğimiz işlemlerin öncesi ve sonrası değişimlerini inceleyin.</p>
-
-        <div class="ba-tabs reveal">
-          <button class="ba-tab active" data-ba="0">Cilt Bakımı</button>
-          <button class="ba-tab" data-ba="1">Microblading</button>
-          <button class="ba-tab" data-ba="2">Gençleştirme</button>
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-rose-50/50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Content -->
+        <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+          <span class="inline-block px-4 py-1.5 bg-rose-100 text-rose-700 text-sm font-semibold rounded-full tracking-wide uppercase">
+            Doğal Güzelliğinize Dokunuş
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+            Kendinize Değer Verin, <br/>
+            <span class="text-rose-600">Işıltınızı</span> Ortaya Çıkarın
+          </h1>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0">
+            Uzman kadromuz, son teknoloji ekipmanlarımız ve kişiye özel bakım çözümlerimizle güzelliğinizi güvenle taçlandırıyoruz.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+            <a href="#randevu" class="px-8 py-4 bg-rose-600 text-white font-medium rounded-2xl shadow-lg shadow-rose-200 hover:bg-rose-700 transition duration-300 text-center">
+              Hemen Randevu Alın
+            </a>
+            <a href="#islemler" class="px-8 py-4 bg-white text-gray-700 font-medium rounded-2xl border border-gray-200 hover:bg-gray-50 transition duration-300 text-center">
+              Hizmetlerimizi İnceleyin
+            </a>
+          </div>
         </div>
 
-        <div class="ba-card reveal">
-          <!-- Interactive Slider -->
-          <div class="ba-slider" id="ba">
-            <img id="baAfter" class="ba-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop" alt="Sonrası">
-            <div class="ba-before-wrap">
-              <img id="baBefore" class="ba-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop" alt="Öncesi">
-            </div>
-            <div class="ba-handle" id="baHandle" tabindex="0" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-              <div class="ba-handle-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
-              </div>
+        <!-- Right Image Frame (Büyütüldü) -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-xl lg:max-w-2xl">
+            <!-- Glow Background -->
+            <div class="absolute -inset-4 bg-gradient-to-r from-rose-400 to-pink-300 rounded-3xl blur-2xl opacity-30"></div>
+            
+            <!-- Large Image Container -->
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white min-h-[500px] lg:min-h-[600px] flex items-center justify-center">
+              <img src="86aa5ec0421d9b469be8c7b4426694ff.jpg" alt="BG Natura Güzellik Salonu" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 hover:scale-105" />
             </div>
           </div>
+        </div>
 
-          <!-- Slider Info -->
-          <div class="ba-info">
-            <h3 id="baTitle">Cilt Bakımı</h3>
-            <p id="baDesc">Cilt bakımının içeriği ve seans planı cildin ihtiyaçlarına göre belirlenir.</p>
-            <ul class="ba-points" id="baPoints">
-              <!-- JS Dinamik Basacak -->
-            </ul>
-            <button class="btn btn-accent" id="baBook" data-wa="Cilt Bakımı">Bu İşlem İçin Randevu Al</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- İŞLEMLERİMİZ SECTION -->
+  <section id="islemler" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-base text-rose-600 font-semibold tracking-wide uppercase">İşlemlerimiz</h2>
+        <p class="mt-2 text-3xl sm:text-4xl font-extrabold text-gray-900">
+          Güzelliğiniz İçin Profesyonel Uygulamalar
+        </p>
+        <p class="mt-4 text-lg text-gray-600">
+          Cildinizin ve bedeninizin ihtiyacı olan tüm bakımları uzman dokunuşlarla sunuyoruz.
+        </p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Lazer Epilasyon -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
+          <div class="relative h-64 overflow-hidden">
+            <img src="86aa5ec0421d9b469be8c7b4426694ff.jpg" alt="Lazer Epilasyon" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Lazer Epilasyon</h3>
+            <p class="text-gray-600 text-sm">Son teknoloji cihazlarımızla pürüzsüz ve kalıcı sonuçlar elde edin.</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Reviews Section -->
-    <section class="reviews-section" id="yorumlar">
-      <div class="container">
-        <h2 class="section-title reveal">Danışan Yorumları</h2>
-        <p class="section-desc reveal">Salonumuzu ziyaret eden danışanlarımızın deneyimleri.</p>
-
-        <div class="reviews-grid">
-          <div class="review-card reveal">
-            <div class="stars" data-stars="5"></div>
-            <p class="review-text">"Cilt bakımı sonrası yüzümdeki canlılık inanılmazdı. İlgileri ve güler yüzleri için çok teşekkür ederim."</p>
-            <div class="review-author">Elif K.</div>
+        <!-- Cilt Bakımı -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
+          <div class="relative h-64 overflow-hidden">
+            <img src="c6801655ddbfcb8e8140e9e9a885bcfb.jpg" alt="Cilt Bakımı" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           </div>
-          <div class="review-card reveal">
-            <div class="stars" data-stars="5"></div>
-            <p class="review-text">"Kaş tasarımı konusunda tereddütlerim vardı ancak tam istediğim doğallıkta bir sonuç elde ettik."</p>
-            <div class="review-author">Selin T.</div>
-          </div>
-          <div class="review-card reveal">
-            <div class="stars" data-stars="5"></div>
-            <p class="review-text">"Hijyenik ortam ve profesyonel yaklaşım. İzmir'de güvenle gittiğim tek adres."</p>
-            <div class="review-author">Merve A.</div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Cilt Bakımı</h3>
+            <p class="text-gray-600 text-sm">Derinlemesine temizlik ve nem terapisi ile cildinize canlılık katın.</p>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <!-- Footer -->
-  <footer id="iletisim">
-    <div class="container">
-      <div class="footer-content">
-        <div>
-          <h2 class="brand-logo" style="color: #FFF; margin-bottom: 8px;">BG Natura</h2>
-          <p style="color: #A8A29E; font-size: 0.9rem;">Güzellik ve Bakım Salonu</p>
+        <!-- Leke Bakımı -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
+          <div class="relative h-64 overflow-hidden">
+            <img src="715a42284de1d3b1d9f362a9a1473cb6.jpg" alt="Leke Bakımı" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Leke Bakımı</h3>
+            <p class="text-gray-600 text-sm">Güneş ve yaşlılık lekelerine karşı özel formüle edilmiş bakım protokolleri.</p>
+          </div>
         </div>
-        <button class="btn btn-accent" data-wa="Footer Randevu">Hemen Randevu Oluştur</button>
+
+        <!-- Zayıflama & Bölgesel İncelme -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
+          <div class="relative h-64 overflow-hidden">
+            <img src="4d4763fc760f5a7ea65bb02887095832.jpg" alt="Zayıflama & Bölgesel İncelme" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Zayıflama & Bölgesel İncelme</h3>
+            <p class="text-gray-600 text-sm">Aparatlarımız ve profesyonel tekniklerimizle hayalinizdeki hatta kavuşun.</p>
+          </div>
+        </div>
+
+        <!-- Kalıcı Makyaj -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
+          <div class="relative h-64 overflow-hidden">
+            <img src="49c5e7847bcb0f3af61f47ee345f9149 (2).jpg" alt="Kalıcı Makyaj" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Kalıcı Makyaj</h3>
+            <p class="text-gray-600 text-sm">Her an bakımlı ve doğal bir görünüm için kalıcı estetik dokunuşlar.</p>
+          </div>
+        </div>
+
+        <!-- Microblading -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
+          <div class="relative h-64 overflow-hidden">
+            <img src="b68e99e608a5834b3812d6d1da2eddb4 (1).jpg" alt="Microblading" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Microblading</h3>
+            <p class="text-gray-600 text-sm">Yüz hatlarınıza en uygun kıl tekniği ile doğal kaş tasarımı.</p>
+          </div>
+        </div>
+
+        <!-- Dudak Renklendirme -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
+          <div class="relative h-64 overflow-hidden">
+            <img src="083e7afd88a2447c1f7acd8f1e1b4b1b (1).jpg" alt="Dudak Renklendirme" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Dudak Renklendirme</h3>
+            <p class="text-gray-600 text-sm">Dudaklarınıza canlılık ve doğal pigment kazandıran özel uygulama.</p>
+          </div>
+        </div>
+
+        <!-- Kirpik Lifting & İpek Kirpik -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
+          <div class="relative h-64 overflow-hidden">
+            <img src="9c41aa91a674b61bcd36904a1a63c044.jpg" alt="Kirpik Lifting & İpek Kirpik" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Kirpik Lifting & İpek Kirpik</h3>
+            <p class="text-gray-600 text-sm">Daha hacimli, kıvrık ve etkileyici bakışlar için profesyonel kirpik bakımı.</p>
+          </div>
+        </div>
+
+        <!-- Kaş Tasarımı & Laminasyon -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
+          <div class="relative h-64 overflow-hidden">
+            <img src="490efb02b676427afdf0e6d75510f403" alt="Kaş Tasarımı & Laminasyon" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Kaş Tasarımı & Laminasyon</h3>
+            <p class="text-gray-600 text-sm">Kaşlarınızı düzene sokan, besleyen ve hacim kazandıran laminasyon işlemi.</p>
+          </div>
+        </div>
+
+        <!-- Protez Tırnak -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
+          <div class="relative h-64 overflow-hidden">
+            <img src="9be898c9deff59b9d125843454382cc6.jpg" alt="Protez Tırnak" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Protez Tırnak</h3>
+            <p class="text-gray-600 text-sm">Uzun ömürlü, şık ve dilediğiniz tasarımda estetik protez tırnak uygulamaları.</p>
+          </div>
+        </div>
+
+        <!-- Manikür & Pedikür -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
+          <div class="relative h-64 overflow-hidden">
+            <img src="416a7e5444f701f39169b20535ffc254.jpg" alt="Manikür & Pedikür" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Manikür & Pedikür</h3>
+            <p class="text-gray-600 text-sm">El ve ayak sağlığınız için hijyenik ve rahatlatıcı medikal bakımlar.</p>
+          </div>
+        </div>
+
       </div>
-      <div class="footer-bottom">
-        <p>&copy; <span id="year"></span> BG Natura Güzellik Salonu. Tüm hakları saklıdır.</p>
-      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-2xl font-bold text-rose-500 mb-2">BG NATURA</p>
+      <p class="text-gray-400 text-sm">© 2026 BG Natura Güzellik Salonu. Tüm hakları saklıdır.</p>
     </div>
   </footer>
 
-  <!-- ==========================================
-     9. JAVASCRIPT LOGIC
-     ========================================== -->
-  <script>
-    (function(){
-      'use strict';
-      var WA_NUMBER = '905555020042';
-
-      /* ---------- Preloader ---------- */
-      var pre = document.getElementById('preloader');
-      function hidePre(){ if(pre) pre.classList.add('done'); }
-      window.addEventListener('load', function(){ setTimeout(hidePre, 300); });
-      setTimeout(hidePre, 2000);
-
-      /* ---------- Nav Scroll State ---------- */
-      var nav = document.getElementById('nav');
-      function onScroll(){
-        if(nav) nav.classList.toggle('scrolled', window.scrollY > 30);
-      }
-      window.addEventListener('scroll', onScroll, {passive:true});
-      onScroll();
-
-      /* ---------- Mobile Menu ---------- */
-      var burger = document.getElementById('hamburger');
-      var mmenu = document.getElementById('mobileMenu');
-      if (burger && mmenu) {
-        function toggleMenu(force){
-          var open = typeof force === 'boolean' ? force : !mmenu.classList.contains('open');
-          mmenu.classList.toggle('open', open);
-          burger.classList.toggle('open', open);
-          document.body.style.overflow = open ? 'hidden' : '';
-        }
-        burger.addEventListener('click', function(){ toggleMenu(); });
-        mmenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ toggleMenu(false); }); });
-      }
-
-      /* ---------- Active Nav Link Observer ---------- */
-      var navLinks = document.querySelectorAll('.nav-link[data-sec]');
-      var sections = ['galeri','yorumlar','iletisim']
-        .map(function(id){ return document.getElementById(id); })
-        .filter(Boolean);
-
-      if('IntersectionObserver' in window && sections.length > 0){
-        var secIO = new IntersectionObserver(function(entries){
-          entries.forEach(function(en){
-            if(en.isIntersecting){
-              navLinks.forEach(function(l){ l.classList.toggle('active', l.dataset.sec === en.target.id); });
-            }
-          });
-        }, {rootMargin:'-30% 0px -50% 0px'});
-        sections.forEach(function(s){ secIO.observe(s); });
-      }
-
-      /* ---------- Stars Generator ---------- */
-      var STAR = '<svg viewBox="0 0 24 24" class="star" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5z"/></svg>';
-      function starsHTML(n){
-        var out = '';
-        for(var i=0; i<5; i++) out += '<span class="' + (i<n ? '' : 'st-off') + '">' + STAR + '</span>';
-        return out;
-      }
-      document.querySelectorAll('[data-stars]').forEach(function(el){ el.innerHTML = starsHTML(parseInt(el.dataset.stars, 10)); });
-
-      /* ---------- Reveal Animations ---------- */
-      var revealEls = document.querySelectorAll('.reveal');
-      if('IntersectionObserver' in window){
-        var revIO = new IntersectionObserver(function(entries, obs){
-          entries.forEach(function(en){
-            if(en.isIntersecting){ en.target.classList.add('in'); obs.unobserve(en.target); }
-          });
-        }, {threshold:.1});
-        revealEls.forEach(function(el){ revIO.observe(el); });
-      } else {
-        revealEls.forEach(function(el){ el.classList.add('in'); });
-      }
-
-      /* ---------- Before / After Interactive Data ---------- */
-      var baData = [
-        {
-          title: 'Cilt Bakımı',
-          imgBefore: 'https://images.unsplash.com/photo-1512290900673-70020023023e?q=80&w=1000&auto=format&fit=crop',
-          imgAfter: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop',
-          desc: 'Derinlemesine cilt temizliği ve nem dengesi sağlayan özel bakım kürü.',
-          points: ['Kişiye özel analiz & kür', 'Gözenek sıkılaştırma', 'Aydınlık ve taze görünüm'],
-          wa: 'Cilt Bakımı'
-        },
-        {
-          title: 'Microblading Kaş',
-          imgBefore: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1000&auto=format&fit=crop',
-          imgAfter: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop',
-          desc: 'Yüz altın oranına uygun, doğal kıl tekniği ile kaş tasarımı.',
-          points: ['Altın oran kaş ölçümü', 'Doğal pigment kullanımı', 'Uzun süre kalıcılık'],
-          wa: 'Kaş Tasarımı & Microblading'
-        },
-        {
-          title: 'Gençleştirme Bakımı',
-          imgBefore: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=1000&auto=format&fit=crop',
-          imgAfter: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1000&auto=format&fit=crop',
-          desc: 'Ince çizgilerin görünümünü azaltan anti-aging dokunuşlar.',
-          points: ['Kollajen tetikleme', 'Cilt esnekliğini artırma', 'Sıkılaştırıcı etki'],
-          wa: 'Gençleştirme Bakımı'
-        }
-      ];
-
-      var ba = document.getElementById('ba'),
-          baBefore = document.getElementById('baBefore'),
-          baAfter = document.getElementById('baAfter'),
-          baHandle = document.getElementById('baHandle'),
-          baTitle = document.getElementById('baTitle'),
-          baDesc = document.getElementById('baDesc'),
-          baPoints = document.getElementById('baPoints'),
-          baBook = document.getElementById('baBook'),
-          baTabs = document.querySelectorAll('.ba-tab'),
-          baIndex = 0;
-
-      function setBaInfo(i){
-        if(!baDesc || !baPoints || !baBook || !baTitle) return;
-        baTitle.textContent = baData[i].title;
-        baDesc.textContent = baData[i].desc;
-        baPoints.innerHTML = baData[i].points.map(function(p){
-          return '<li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>' + p + '</li>';
-        }).join('');
-        baBook.dataset.wa = baData[i].wa;
-      }
-
-      function setBaPosition(percent){
-        if(!ba) return;
-        var value = Math.max(0, Math.min(100, percent));
-        ba.style.setProperty('--pos', value + '%');
-        if(baHandle) baHandle.setAttribute('aria-valuenow', Math.round(value));
-      }
-
-      if(ba){
-        setBaInfo(0);
-
-        baTabs.forEach(function(tab){
-          tab.addEventListener('click', function(){
-            var i = parseInt(tab.dataset.ba, 10);
-            if(i === baIndex) return;
-            baIndex = i;
-            baTabs.forEach(function(t){
-              var on = t === tab;
-              t.classList.toggle('active', on);
-            });
-
-            if(baBefore) baBefore.src = baData[i].imgBefore;
-            if(baAfter) baAfter.src = baData[i].imgAfter;
-            setBaInfo(i);
-            setBaPosition(50);
-          });
-        });
-
-        var dragging = false;
-        function updateBaFromClientX(clientX){
-          var rect = ba.getBoundingClientRect();
-          setBaPosition(((clientX - rect.left) / rect.width) * 100);
-        }
-
-        ba.addEventListener('pointerdown', function(e){
-          dragging = true;
-          ba.setPointerCapture(e.pointerId);
-          updateBaFromClientX(e.clientX);
-        });
-
-        ba.addEventListener('pointermove', function(e){
-          if(dragging) updateBaFromClientX(e.clientX);
-        });
-
-        ba.addEventListener('pointerup', function(){ dragging = false; });
-        ba.addEventListener('pointercancel', function(){ dragging = false; });
-
-        if(baHandle){
-          baHandle.addEventListener('keydown', function(e){
-            var current = parseFloat(getComputedStyle(ba).getPropertyValue('--pos')) || 50;
-            if(e.key === 'ArrowLeft'){ e.preventDefault(); setBaPosition(current - 5); }
-            if(e.key === 'ArrowRight'){ e.preventDefault(); setBaPosition(current + 5); }
-          });
-        }
-      }
-
-      /* ---------- WhatsApp Router ---------- */
-      function openWhatsApp(service){
-        var message = service && service !== 'Genel'
-          ? 'Merhaba, ' + service + ' hakkında bilgi almak ve randevu oluşturmak istiyorum.'
-          : 'Merhaba, randevu hakkında bilgi almak istiyorum.';
-        window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message), '_blank', 'noopener');
-      }
-
-      document.addEventListener('click', function(e){
-        var wa = e.target.closest('[data-wa]');
-        if(wa){
-          e.preventDefault();
-          openWhatsApp(wa.dataset.wa || 'Genel');
-        }
-      });
-
-      /* ---------- Working Hours & Status ---------- */
-      var openStatus = document.getElementById('openStatus');
-      var now = new Date();
-      var day = now.getDay();
-      var minutes = now.getHours() * 60 + now.getMinutes();
-      var isOpen = day >= 1 && day <= 6 && minutes >= 540 && minutes < 1170;
-
-      if(openStatus){
-        openStatus.innerHTML = '<span class="dot ' + (isOpen ? 'dot-g' : 'dot-r') + '"></span>' +
-          (isOpen ? 'Açık · 09:00–19:30' : 'Kapalı · Pzt–Cmt 09:00–19:30');
-      }
-
-      var year = document.getElementById('year');
-      if(year) year.textContent = now.getFullYear();
-
-    })();
-  </script>
 </body>
 </html>
