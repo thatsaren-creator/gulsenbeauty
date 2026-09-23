@@ -180,9 +180,6 @@ section{scroll-margin-top:86px;position:relative}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 .svc-media{position:relative;aspect-ratio:4/3;overflow:hidden}
 .svc-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.svc-media--contain{padding:14px;background:var(--sand)}
-.svc-media--contain img{object-fit:contain}
-
 .svc:hover .svc-media img{transform:scale(1.07)}
 .svc-chip{position:absolute;top:14px;left:14px;background:rgba(253,251,247,.94);backdrop-filter:blur(4px);border:1px solid var(--gold-faint);border-radius:999px;padding:6px 14px;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-text)}
 .svc-body{padding:26px 26px 24px;display:flex;flex-direction:column;flex:1}
@@ -548,8 +545,6 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
         </div>
       </article>
 
-      
-
       <article class="svc reveal" data-cat="makyaj" style="--d:.24s">
         <div class="svc-media">
           <img src="WhatsApp%20Image%202026-09-23%20at%2019.08.27.jpeg" alt="Kalıcı makyaj uygulaması" loading="lazy">
@@ -585,8 +580,8 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
       </article>
 
       <article class="svc reveal" data-cat="makyaj" style="--d:.36s">
-        <div class="svc-media svc-media--contain">
-          <img src="WhatsApp%20Image%202026-09-23%20at%2018.38.04.jpeg" alt="Dudak renklendirme uygulaması" loading="lazy">
+        <div class="svc-media">
+          <img src="WhatsApp%20Image%202026-09-23%20at%2018.38.04.jpeg" alt="Dudak renklendirme uygulaması" loading="lazy" style="object-fit: contain; background: #f8f8f8;">
           <span class="svc-chip">Dudak</span>
         </div>
         <div class="svc-body">
@@ -603,7 +598,7 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
 
       <article class="svc reveal" data-cat="makyaj" style="--d:.42s">
         <div class="svc-media">
-          <img src="WhatsApp%20Image%202026-09-23%20at%2018.38.04%20%284%29.jpeg" alt="Kirpik lifting ve ipek kirpik uygulaması" loading="lazy">
+          <img src="WhatsApp%20Image%202026-09-23%20at%2018.38.04%20%282%29.jpeg" alt="Kirpik lifting ve ipek kirpik uygulaması" loading="lazy">
           <span class="svc-chip">Kirpik</span>
         </div>
         <div class="svc-body">
@@ -881,205 +876,5 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
   </button>
 </div>
 
-<script>
-(function(){
-  'use strict';
-  var WA_NUMBER = '905555020042';
-
-  /* ---------- Preloader ---------- */
-  var pre = document.getElementById('preloader');
-  function hidePre(){ if(pre) pre.classList.add('done'); }
-  window.addEventListener('load', function(){ setTimeout(hidePre, 500); });
-  setTimeout(hidePre, 2600); // güvenlik ağı
-
-  /* ---------- Nav scroll state ---------- */
-  var nav = document.getElementById('nav');
-  function onScroll(){
-    if(window.scrollY > 30) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-
-  /* ---------- Mobile menu ---------- */
-  var burger = document.getElementById('hamburger');
-  var mmenu = document.getElementById('mobileMenu');
-  function toggleMenu(force){
-    var open = typeof force === 'boolean' ? force : !mmenu.classList.contains('open');
-    mmenu.classList.toggle('open', open);
-    burger.classList.toggle('open', open);
-    burger.setAttribute('aria-expanded', open);
-    mmenu.setAttribute('aria-hidden', !open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  }
-  burger.addEventListener('click', function(){ toggleMenu(); });
-  mmenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ toggleMenu(false); }); });
-
-  /* ---------- Active nav link ---------- */
-  var navLinks = document.querySelectorAll('.nav-link[data-sec]');
-  var sections = ['hizmetler','yorumlar','iletisim'].map(function(id){ return document.getElementById(id); });
-  if('IntersectionObserver' in window){
-    var secIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.isIntersecting){
-          navLinks.forEach(function(l){ l.classList.toggle('active', l.dataset.sec === en.target.id); });
-        }
-      });
-    }, {rootMargin:'-40% 0px -55% 0px'});
-    sections.forEach(function(s){ secIO.observe(s); });
-  }
-
-  /* ---------- Stars helper ---------- */
-  var STAR = '<svg viewBox="0 0 24 24" class="star" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9L12 2.5z"/></svg>';
-  function starsHTML(n){
-    var out = '';
-    for(var i=0;i<5;i++) out += '<span class="' + (i<n ? '' : 'st-off') + '">' + STAR + '</span>';
-    return out;
-  }
-  document.querySelectorAll('[data-stars]').forEach(function(el){ el.innerHTML = starsHTML(parseInt(el.dataset.stars,10)); });
-
-  /* ---------- Reveal on scroll ---------- */
-  var revealEls = document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    var revIO = new IntersectionObserver(function(entries, obs){
-      entries.forEach(function(en){
-        if(en.isIntersecting){ en.target.classList.add('in'); obs.unobserve(en.target); }
-      });
-    }, {threshold:.14});
-    revealEls.forEach(function(el){ revIO.observe(el); });
-  } else {
-    revealEls.forEach(function(el){ el.classList.add('in'); });
-  }
-
-  /* ---------- Animated counters ---------- */
-  function animateCount(el){
-    var target = parseFloat(el.dataset.count),
-        dec = parseInt(el.dataset.decimals || '0', 10),
-        pre_ = el.dataset.prefix || '',
-        suf = el.dataset.suffix || '',
-        dur = 1800, t0 = null;
-    function tick(t){
-      if(!t0) t0 = t;
-      var p = Math.min((t - t0)/dur, 1),
-          e = 1 - Math.pow(1 - p, 3);
-      el.textContent = pre_ + (target * e).toFixed(dec) + suf;
-      if(p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-  var counters = document.querySelectorAll('[data-count]');
-  if('IntersectionObserver' in window){
-    var cIO = new IntersectionObserver(function(entries, obs){
-      entries.forEach(function(en){
-        if(en.isIntersecting){ animateCount(en.target); obs.unobserve(en.target); }
-      });
-    }, {threshold:.5});
-    counters.forEach(function(el){ cIO.observe(el); });
-  } else {
-    counters.forEach(animateCount);
-  }
-
-  /* ---------- Services filter ---------- */
-  var filterBtns = document.querySelectorAll('.filter-btn');
-  var svcCards = document.querySelectorAll('.svc');
-  function setFilter(f){
-    filterBtns.forEach(function(b){ b.classList.toggle('active', b.dataset.filter === f); });
-    svcCards.forEach(function(c){
-      var show = f === 'all' || c.dataset.cat === f;
-      c.classList.toggle('hidden', !show);
-      c.classList.remove('pop');
-      if(show){ void c.offsetWidth; c.classList.add('pop'); }
-    });
-  }
-  filterBtns.forEach(function(b){
-    b.addEventListener('click', function(){ setFilter(b.dataset.filter); });
-  });
-  document.querySelectorAll('[data-goto-filter]').forEach(function(a){
-    a.addEventListener('click', function(){ setFilter(a.dataset.gotoFilter); });
-  });
-
-  /* ---------- Reviews / example comments ---------- */
-  var revGrid = document.getElementById('revGrid');
-  if(revGrid){
-    revGrid.innerHTML =
-      '<article class="rev reveal in">' +
-        '<span class="rev-quote">“</span>' +
-        '<div class="rev-top"><span class="rev-ava">A</span><div><div class="rev-name">Ayşe K.</div><div class="rev-src"><b>Örnek yorum</b> · Google formatında</div></div></div>' +
-        '<div class="rev-stars">' + starsHTML(5) + '</div>' +
-        '<p>Çok temiz ve ferah bir merkez. Güler yüzlü karşılamaları ve işlemi detaylı şekilde anlatmaları çok hoşuma gitti. İlgilerinden dolayı teşekkür ederim.</p>' +
-        '<span class="rev-date">Örnek müşteri yorumu</span>' +
-      '</article>' +
-      '<article class="rev reveal in">' +
-        '<span class="rev-quote">“</span>' +
-        '<div class="rev-top"><span class="rev-ava">E</span><div><div class="rev-name">Elif T.</div><div class="rev-src"><b>Örnek yorum</b> · Google formatında</div></div></div>' +
-        '<div class="rev-stars">' + starsHTML(5) + '</div>' +
-        '<p>Cilt bakımı için geldim ve süreçten çok memnun kaldım. Oldukça özenli çalışıyorlar, ortam da gerçekten hijyenik. Tekrar gelmeyi düşünüyorum.</p>' +
-        '<span class="rev-date">Örnek müşteri yorumu</span>' +
-      '</article>' +
-      '<article class="rev reveal in">' +
-        '<span class="rev-quote">“</span>' +
-        '<div class="rev-top"><span class="rev-ava">S</span><div><div class="rev-name">Seda Y.</div><div class="rev-src"><b>Örnek yorum</b> · Google formatında</div></div></div>' +
-        '<div class="rev-stars">' + starsHTML(5) + '</div>' +
-        '<p>Randevu sürecinden işlem sonrasına kadar çok ilgili davrandılar. İşlemler hakkında aklımdaki soruların hepsini cevapladılar. Genel olarak güzel bir deneyimdi.</p>' +
-        '<span class="rev-date">Örnek müşteri yorumu</span>' +
-      '</article>';
-  }  /* ---------- WhatsApp ---------- */
-  function openWhatsApp(service){
-    var message = service && service !== 'Genel'
-      ? 'Merhaba, ' + service + ' hakkında bilgi almak ve randevu oluşturmak istiyorum.'
-      : 'Merhaba, randevu hakkında bilgi almak istiyorum.';
-    window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message), '_blank', 'noopener');
-  }
-
-  document.addEventListener('click', function(e){
-    var wa = e.target.closest('[data-wa]');
-    if(wa){
-      e.preventDefault();
-      openWhatsApp(wa.dataset.wa || 'Genel');
-    }
-  });
-
-  /* ---------- WhatsApp floating button ---------- */
-  var waFloat = document.getElementById('waFloat');
-  var waBubble = document.getElementById('waBubble');
-  var waBubbleX = document.getElementById('waBubbleX');
-
-  setTimeout(function(){
-    if(waFloat) waFloat.classList.add('show');
-  }, 900);
-
-  setTimeout(function(){
-    if(waBubble) waBubble.classList.add('show');
-  }, 3200);
-
-  if(waBubbleX){
-    waBubbleX.addEventListener('click', function(){
-      if(waBubble) waBubble.classList.remove('show');
-    });
-  }
-
-  /* ---------- Opening status ---------- */
-  var openStatus = document.getElementById('openStatus');
-  var now = new Date();
-  var day = now.getDay();
-  var minutes = now.getHours() * 60 + now.getMinutes();
-  var isOpen = day >= 1 && day <= 6 && minutes >= 540 && minutes < 1170;
-
-  if(openStatus){
-    openStatus.innerHTML = '<span class="dot ' + (isOpen ? 'dot-g' : 'dot-r') + '"></span>' +
-      (isOpen ? 'Şu an açığız · 09:00–19:30' : 'Şu an kapalıyız · Pzt–Cmt 09:00–19:30');
-  }
-
-  document.querySelectorAll('.hours-row').forEach(function(row){
-    var days = (row.dataset.days || '').split(',').map(function(v){ return parseInt(v,10); });
-    if(days.indexOf(day) !== -1) row.classList.add('today');
-  });
-
-  /* ---------- Footer year ---------- */
-  var year = document.getElementById('year');
-  if(year) year.textContent = new Date().getFullYear();
-
-})();
-</script>
 </body>
 </html>
