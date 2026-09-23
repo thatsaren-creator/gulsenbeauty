@@ -107,25 +107,32 @@ section{scroll-margin-top:86px;position:relative}
 .mmenu.open .mm-foot{opacity:1}
 .mm-foot a.tel{font-family:var(--serif);font-size:1.35rem;color:var(--charcoal)}
 
-/* ============ HERO ============ */
-.hero{min-height:100svh;display:flex;align-items:center;background:var(--cream);overflow:hidden;padding:130px 0 90px}
-.hero-mark{position:absolute;left:-2vw;bottom:4%;font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(8rem,22vw,20rem);color:rgba(212,175,55,.07);line-height:1;pointer-events:none;user-select:none;white-space:nowrap}
-.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(2rem,6vw,5rem);align-items:center;position:relative;width:100%}
-[data-hero]{opacity:0;transform:translateY(28px);animation:heroIn 1.05s var(--ease) forwards;animation-delay:var(--d,0s)}
-@keyframes heroIn{to{opacity:1;transform:none}}
-.hero-kicker{display:flex;align-items:center;gap:14px;font-size:.66rem;font-weight:700;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-text)}
-.hero-kicker::before{content:'';width:38px;height:1px;background:var(--gold)}
-.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.5rem,5.4vw,4.4rem);line-height:1.08;margin-top:22px;letter-spacing:.005em}
-.hero h1 em{font-style:italic;color:var(--gold-text);position:relative;white-space:nowrap}
-.hero h1 em::after{content:'';position:absolute;left:0;right:0;bottom:.06em;height:1px;background:var(--gold-soft)}
-.hero-sub{margin-top:22px;color:var(--muted);max-width:520px;font-size:1rem}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
-.hero-trust{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:34px;font-size:.8rem;color:var(--muted)}
-.hero-trust .dot-sep{width:4px;height:4px;border-radius:50%;background:var(--gold)}
-.stars-row{display:inline-flex;gap:2px;vertical-align:middle}
-.star{width:15px;height:15px;fill:var(--gold)}
-.st-off .star{fill:#E3D7C4}
-.hero-trust strong{color:var(--charcoal);font-weight:700}
+/* ============ HERO VISUAL (KARE ÇERÇEVE & GÖRSEL DÜZENLEMESİ) ============ */
+.hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 520px; /* Hero alanındaki görsel genişlik sınırı */
+  aspect-ratio: 1 / 1; /* Çerçeveyi tam kare yapar */
+  border-radius: 20px; /* Modern, hafif kavisli kare (dik tam kare istenirse 0 yapılabilir) */
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  margin: 0 auto;
+}
+
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Görseli bozmadan kare çerçevenin içine tam sığdırır */
+  object-position: center; /* Mekanın merkezini odak noktası yapar */
+  display: block;
+}
+
+/* Görsel üzerindeki kapatıcı katmanları ve tabelaları gizleyip mekanı öne çıkarır */
+.hero-visual .overlay,
+.hero-visual .hero-badge,
+.hero-visual .hero-logo-overlay {
+  display: none !important;
+}
 
 .hero-visual{position:relative;justify-self:center;width:min(100%,440px)}
 .hero-frame{position:absolute;inset:0;transform:translate(20px,20px);border:1px solid var(--gold-soft);border-radius:999px 999px 24px 24px;z-index:0}
