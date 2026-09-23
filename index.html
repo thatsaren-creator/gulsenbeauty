@@ -127,7 +127,7 @@ section{scroll-margin-top:86px;position:relative}
 .st-off .star{fill:#E3D7C4}
 .hero-trust strong{color:var(--charcoal);font-weight:700}
 
-.hero-visual{position:relative;justify-self:center;width:min(100%,600px)}
+.hero-visual{position:relative;justify-self:center;width:min(100%,440px)}
 .hero-frame{position:absolute;inset:0;transform:translate(20px,20px);border:1px solid var(--gold-soft);border-radius:24px;z-index:0}
 .hero-img-wrap{position:relative;z-index:1;aspect-ratio:1/1;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);background:var(--nude)}
 .hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center center;transform:scale(1.02);animation:kb 14s ease-in-out infinite alternate}
@@ -338,7 +338,7 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
   .hamburger{display:flex}
   .hero{padding:120px 0 80px;min-height:auto}
   .hero-grid{grid-template-columns:1fr;gap:3.2rem}
-  .hero-visual{width:min(100%,440px)}
+  .hero-visual{width:min(100%,380px)}
   .hero-badge{left:-10px;bottom:-20px;padding:13px 16px}
   .hero-chip{right:0}
   .hero-scroll{display:none}
@@ -704,6 +704,48 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
   </div>
 </section>
 
+<!-- BEFORE / AFTER -->
+<section class="gallery" id="galeri">
+  <div class="container">
+    <div class="sec-head reveal" style="text-align:left">
+      <div class="kicker left">Öncesi / Sonrası</div>
+      <h2 class="h2">Gözle Görülür <em>Dönüşümler</em></h2>
+      <p class="sec-sub">Sürgüyü sağa sola kaydırarak uygulamalarımızın sonuçlarını yakından inceleyin.</p>
+    </div>
+    <div class="ba-grid">
+      <div class="reveal">
+        <div class="ba-tabs" id="baTabs" role="tablist" aria-label="Dönüşüm kategorileri">
+          <button class="ba-tab active" data-ba="0" role="tab" aria-selected="true">Medikal Cilt Bakımı</button>
+          <button class="ba-tab" data-ba="1" role="tab" aria-selected="false">Kaş Tasarımı &amp; Microblading</button>
+          <button class="ba-tab" data-ba="2" role="tab" aria-selected="false">Cilt Gençleştirme</button>
+        </div>
+        <div class="ba-info">
+          <p id="baDesc"></p>
+          <ul class="ba-points" id="baPoints"></ul>
+          <button class="ba-book" id="baBook" data-wa="Medikal Cilt Bakımı">Bu Hizmet için Randevu Al
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="reveal" style="--d:.12s">
+        <div class="ba" id="ba" aria-label="Öncesi ve sonrası karşılaştırma — sürükleyin">
+          <img class="ba-img ba-after" id="baAfter" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop" alt="Uygulama sonrası görünüm" draggable="false">
+          <img class="ba-img ba-before" id="baBefore" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop" alt="Uygulama öncesi görünüm" draggable="false">
+          <span class="ba-label ba-label-b">Önce</span>
+          <span class="ba-label ba-label-a">Sonra</span>
+          <div class="ba-handle" id="baHandle" tabindex="0" role="slider" aria-label="Karşılaştırma sürgüsü" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <div class="ba-knob">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+          </div>
+        </div>
+        <p class="ba-note">Temsilî dönüşüm görselidir — sonuçlar kişiye ve cilt yapısına göre değişiklik gösterebilir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- REVIEWS -->
 <section class="reviews" id="yorumlar">
   <div class="container">
@@ -817,6 +859,7 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
       <h4>Keşfet</h4>
       <ul>
         <li><a href="#hizmetler">Hizmetlerimiz</a></li>
+        <li><a href="#galeri">Öncesi / Sonrası</a></li>
         <li><a href="#yorumlar">Müşteri Yorumları</a></li>
         <li><a href="#iletisim">İletişim &amp; Konum</a></li>
       </ul>
