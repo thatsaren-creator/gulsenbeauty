@@ -110,7 +110,7 @@ section{scroll-margin-top:86px;position:relative}
 /* ============ HERO ============ */
 .hero{min-height:100svh;display:flex;align-items:center;background:var(--cream);overflow:hidden;padding:130px 0 90px}
 .hero-mark{position:absolute;left:-2vw;bottom:4%;font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(8rem,22vw,20rem);color:rgba(212,175,55,.07);line-height:1;pointer-events:none;user-select:none;white-space:nowrap}
-.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(2rem,6vw,5rem);align-items:center;position:relative;width:100%}
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(2rem,6vw,5rem);align-items:center;position:relative;width:100%}
 [data-hero]{opacity:0;transform:translateY(28px);animation:heroIn 1.05s var(--ease) forwards;animation-delay:var(--d,0s)}
 @keyframes heroIn{to{opacity:1;transform:none}}
 .hero-kicker{display:flex;align-items:center;gap:14px;font-size:.66rem;font-weight:700;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-text)}
@@ -127,7 +127,7 @@ section{scroll-margin-top:86px;position:relative}
 .st-off .star{fill:#E3D7C4}
 .hero-trust strong{color:var(--charcoal);font-weight:700}
 
-.hero-visual{position:relative;justify-self:center;width:min(100%,440px)}
+.hero-visual{position:relative;justify-self:center;width:min(100%,700px)}
 .hero-frame{position:absolute;inset:0;transform:translate(20px,20px);border:1px solid var(--gold-soft);border-radius:24px;z-index:0}
 .hero-img-wrap{position:relative;z-index:1;aspect-ratio:1/1;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);background:var(--nude)}
 .hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center center;transform:scale(1.02);animation:kb 14s ease-in-out infinite alternate}
@@ -193,36 +193,6 @@ section{scroll-margin-top:86px;position:relative}
 .svc-btn svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s var(--ease)}
 .svc-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
 .svc-btn:hover svg{transform:translateX(5px)}
-
-/* ============ BEFORE / AFTER ============ */
-.gallery{background:var(--sand);border-block:1px solid var(--line);padding:clamp(4.5rem,9vw,7.5rem) 0}
-.ba-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2.4rem,6vw,5rem);align-items:center}
-.ba-tabs{display:flex;flex-direction:column;margin-top:6px}
-.ba-tab{position:relative;text-align:left;font-family:var(--serif);font-weight:600;font-size:1.45rem;color:var(--muted);padding:15px 0 15px 26px;border-bottom:1px solid var(--line);transition:color .3s}
-.ba-tab::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3px;height:62%;background:var(--gold);transition:transform .4s var(--ease)}
-.ba-tab:hover{color:var(--charcoal)}
-.ba-tab.active{color:var(--charcoal)}
-.ba-tab.active::before{transform:translateY(-50%) scaleY(1)}
-.ba-info{margin-top:26px}
-.ba-info p{color:var(--muted);font-size:.94rem}
-.ba-points{margin-top:18px;display:flex;flex-direction:column;gap:9px}
-.ba-points li{display:flex;gap:9px;font-size:.85rem;color:#4E463D;align-items:flex-start}
-.ba-points svg{width:14px;height:14px;stroke:var(--gold-text);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none;margin-top:4px}
-.ba-book{display:inline-flex;align-items:center;gap:9px;margin-top:24px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-text);border-bottom:1px solid var(--gold-soft);padding-bottom:5px;transition:color .3s,border-color .3s,gap .3s var(--ease)}
-.ba-book:hover{color:var(--charcoal);border-color:var(--charcoal);gap:14px}
-.ba{position:relative;overflow:hidden;border-radius:24px;height:clamp(400px,58vh,560px);box-shadow:var(--shadow);touch-action:pan-y;cursor:ew-resize;user-select:none;--pos:50%;background:var(--nude)}
-.ba-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;-webkit-user-drag:none;transition:opacity .3s ease,filter .3s}
-.ba-after{filter:saturate(1.07) brightness(1.04)}
-.ba-before{clip-path:inset(0 calc(100% - var(--pos)) 0 0);filter:saturate(.5) contrast(.94) brightness(.86) sepia(.24)}
-.ba.switching .ba-img{opacity:0}
-.ba-label{position:absolute;top:16px;z-index:3;padding:7px 15px;border-radius:999px;background:rgba(30,28,25,.55);backdrop-filter:blur(4px);color:var(--cream);font-size:.62rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;pointer-events:none}
-.ba-label-b{left:16px}
-.ba-label-a{right:16px;background:rgba(212,175,55,.85);color:var(--ink)}
-.ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);z-index:4;width:2px;background:var(--cream);transform:translateX(-1px);outline:none}
-.ba-handle:focus-visible{background:var(--gold)}
-.ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--cream);border:1px solid var(--gold-soft);box-shadow:0 10px 24px rgba(30,28,25,.28);display:flex;align-items:center;justify-content:center;gap:2px;cursor:ew-resize}
-.ba-knob svg{width:13px;height:13px;stroke:var(--gold-text);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.ba-note{margin-top:16px;font-size:.72rem;color:var(--muted);text-align:center;letter-spacing:.03em}
 
 /* ============ REVIEWS ============ */
 .reviews{padding:clamp(4.5rem,9vw,7.5rem) 0}
@@ -338,7 +308,7 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
   .hamburger{display:flex}
   .hero{padding:120px 0 80px;min-height:auto}
   .hero-grid{grid-template-columns:1fr;gap:3.2rem}
-  .hero-visual{width:min(100%,380px)}
+  .hero-visual{width:min(100%,520px)}
   .hero-badge{left:-10px;bottom:-20px;padding:13px 16px}
   .hero-chip{right:0}
   .hero-scroll{display:none}
@@ -381,7 +351,6 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
     </a>
     <nav class="nav-links" aria-label="Ana menü">
       <a href="#hizmetler" class="nav-link" data-sec="hizmetler">Hizmetler</a>
-      <a href="#galeri" class="nav-link" data-sec="galeri">Dönüşümler</a>
       <a href="#yorumlar" class="nav-link" data-sec="yorumlar">Yorumlar</a>
       <a href="#iletisim" class="nav-link" data-sec="iletisim">İletişim</a>
     </nav>
@@ -401,7 +370,6 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
 <div class="mmenu" id="mobileMenu" aria-hidden="true">
   <nav aria-label="Mobil menü">
     <a href="#hizmetler" class="m-link" style="transition-delay:.1s"><small>01</small>Hizmetler</a>
-    <a href="#galeri" class="m-link" style="transition-delay:.16s"><small>02</small>Dönüşümler</a>
     <a href="#yorumlar" class="m-link" style="transition-delay:.22s"><small>03</small>Yorumlar</a>
     <a href="#iletisim" class="m-link" style="transition-delay:.28s"><small>04</small>İletişim</a>
   </nav>
@@ -704,48 +672,6 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
   </div>
 </section>
 
-<!-- BEFORE / AFTER -->
-<section class="gallery" id="galeri">
-  <div class="container">
-    <div class="sec-head reveal" style="text-align:left">
-      <div class="kicker left">Öncesi / Sonrası</div>
-      <h2 class="h2">Gözle Görülür <em>Dönüşümler</em></h2>
-      <p class="sec-sub">Sürgüyü sağa sola kaydırarak uygulamalarımızın sonuçlarını yakından inceleyin.</p>
-    </div>
-    <div class="ba-grid">
-      <div class="reveal">
-        <div class="ba-tabs" id="baTabs" role="tablist" aria-label="Dönüşüm kategorileri">
-          <button class="ba-tab active" data-ba="0" role="tab" aria-selected="true">Medikal Cilt Bakımı</button>
-          <button class="ba-tab" data-ba="1" role="tab" aria-selected="false">Kaş Tasarımı &amp; Microblading</button>
-          <button class="ba-tab" data-ba="2" role="tab" aria-selected="false">Cilt Gençleştirme</button>
-        </div>
-        <div class="ba-info">
-          <p id="baDesc"></p>
-          <ul class="ba-points" id="baPoints"></ul>
-          <button class="ba-book" id="baBook" data-wa="Medikal Cilt Bakımı">Bu Hizmet için Randevu Al
-            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="reveal" style="--d:.12s">
-        <div class="ba" id="ba" aria-label="Öncesi ve sonrası karşılaştırma — sürükleyin">
-          <img class="ba-img ba-after" id="baAfter" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop" alt="Uygulama sonrası görünüm" draggable="false">
-          <img class="ba-img ba-before" id="baBefore" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop" alt="Uygulama öncesi görünüm" draggable="false">
-          <span class="ba-label ba-label-b">Önce</span>
-          <span class="ba-label ba-label-a">Sonra</span>
-          <div class="ba-handle" id="baHandle" tabindex="0" role="slider" aria-label="Karşılaştırma sürgüsü" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-            <div class="ba-knob">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-            </div>
-          </div>
-        </div>
-        <p class="ba-note">Temsilî dönüşüm görselidir — sonuçlar kişiye ve cilt yapısına göre değişiklik gösterebilir.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- REVIEWS -->
 <section class="reviews" id="yorumlar">
   <div class="container">
@@ -859,7 +785,6 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
       <h4>Keşfet</h4>
       <ul>
         <li><a href="#hizmetler">Hizmetlerimiz</a></li>
-        <li><a href="#galeri">Öncesi / Sonrası</a></li>
         <li><a href="#yorumlar">Müşteri Yorumları</a></li>
         <li><a href="#iletisim">İletişim &amp; Konum</a></li>
       </ul>
@@ -942,7 +867,7 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
 
   /* ---------- Active nav link ---------- */
   var navLinks = document.querySelectorAll('.nav-link[data-sec]');
-  var sections = ['hizmetler','galeri','yorumlar','iletisim'].map(function(id){ return document.getElementById(id); });
+  var sections = ['hizmetler','yorumlar','iletisim'].map(function(id){ return document.getElementById(id); });
   if('IntersectionObserver' in window){
     var secIO = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
@@ -1022,119 +947,6 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
   document.querySelectorAll('[data-goto-filter]').forEach(function(a){
     a.addEventListener('click', function(){ setFilter(a.dataset.gotoFilter); });
   });
-
-  /* ---------- Before / After ---------- */
-  var baData = [
-    {
-      img:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop',
-      desc:'Cilt bakımının içeriği ve seans planı cildin ihtiyaçlarına göre belirlenir.',
-      points:['Kişiye özel bakım planı','Seans süresi uygulamaya göre belirlenir','Bakım sonrası öneriler'],
-      wa:'Cilt Bakımı'
-    },
-    {
-      img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop',
-      desc:'Yüz hatlarına göre planlanan kaş tasarımı ve microblading uygulamaları.',
-      points:['Yüz oranlarına göre tasarım','Doğal görünüm odaklı çalışma','Uygulama sonrası bakım bilgisi'],
-      wa:'Kaş Tasarımı & Microblading'
-    },
-    {
-      img:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1000&auto=format&fit=crop',
-      desc:'Cildin görünümünü desteklemeye yönelik bakım ve gençleştirme uygulamaları.',
-      points:['Cilt ihtiyacına göre planlama','Kişiye özel uygulama','Bakım sonrası öneriler'],
-      wa:'Cilt Bakımı'
-    }
-  ];
-
-  var ba = document.getElementById('ba'),
-      baBefore = document.getElementById('baBefore'),
-      baAfter = document.getElementById('baAfter'),
-      baHandle = document.getElementById('baHandle'),
-      baDesc = document.getElementById('baDesc'),
-      baPoints = document.getElementById('baPoints'),
-      baBook = document.getElementById('baBook'),
-      baTabs = document.querySelectorAll('.ba-tab'),
-      baIndex = 0;
-
-  function setBaInfo(i){
-    if(!baDesc || !baPoints || !baBook) return;
-    baDesc.textContent = baData[i].desc;
-    baPoints.innerHTML = baData[i].points.map(function(p){
-      return '<li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>' + p + '</li>';
-    }).join('');
-    baBook.dataset.wa = baData[i].wa;
-  }
-
-  function setBaPosition(percent){
-    if(!ba) return;
-    var value = Math.max(0, Math.min(100, percent));
-    ba.style.setProperty('--pos', value + '%');
-    if(baHandle) baHandle.setAttribute('aria-valuenow', Math.round(value));
-  }
-
-  setBaInfo(0);
-
-  baTabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
-      var i = parseInt(tab.dataset.ba, 10);
-      if(i === baIndex) return;
-      baIndex = i;
-      baTabs.forEach(function(t){
-        var on = t === tab;
-        t.classList.toggle('active', on);
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
-
-      if(ba) ba.classList.add('switching');
-      setTimeout(function(){
-        if(baBefore) baBefore.src = baData[i].img;
-        if(baAfter) baAfter.src = baData[i].img;
-        setBaInfo(i);
-        setBaPosition(50);
-        setTimeout(function(){
-          if(ba) ba.classList.remove('switching');
-        }, 80);
-      }, 300);
-    });
-  });
-
-  if(ba){
-    var dragging = false;
-
-    function updateBaFromClientX(clientX){
-      var rect = ba.getBoundingClientRect();
-      setBaPosition(((clientX - rect.left) / rect.width) * 100);
-    }
-
-    ba.addEventListener('pointerdown', function(e){
-      dragging = true;
-      ba.setPointerCapture(e.pointerId);
-      updateBaFromClientX(e.clientX);
-    });
-
-    ba.addEventListener('pointermove', function(e){
-      if(dragging) updateBaFromClientX(e.clientX);
-    });
-
-    ba.addEventListener('pointerup', function(){
-      dragging = false;
-    });
-
-    ba.addEventListener('pointercancel', function(){
-      dragging = false;
-    });
-
-    baHandle.addEventListener('keydown', function(e){
-      var current = parseFloat(getComputedStyle(ba).getPropertyValue('--pos')) || 50;
-      if(e.key === 'ArrowLeft'){
-        e.preventDefault();
-        setBaPosition(current - 5);
-      }
-      if(e.key === 'ArrowRight'){
-        e.preventDefault();
-        setBaPosition(current + 5);
-      }
-    });
-  }
 
   /* ---------- Reviews / example comments ---------- */
   var revGrid = document.getElementById('revGrid');
