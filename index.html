@@ -227,6 +227,11 @@ section{scroll-margin-top:86px;position:relative}
 .instagram-handle{display:inline-block;margin-top:14px;font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);font-weight:600;color:var(--gold-text)}
 .instagram-card p{max-width:580px;margin:12px auto 0;color:var(--muted);font-size:.94rem}
 .instagram-card .btn{margin-top:26px}
+.instagram-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:32px auto 0;max-width:980px}
+.instagram-gallery-item{aspect-ratio:1/1;overflow:hidden;border-radius:16px;border:1px solid var(--gold-soft);background:var(--sand)}
+.instagram-gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.instagram-gallery-item:hover img{transform:scale(1.05)}
+@media(max-width:800px){.instagram-gallery{grid-template-columns:repeat(2,1fr);gap:10px}}
 
 /* ============ CONTACT ============ */
 .contact{background:var(--dark);color:var(--cream);padding:clamp(4.5rem,9vw,7.5rem) 0;overflow:hidden}
@@ -734,9 +739,19 @@ footer{background:var(--dark);color:var(--cream);border-top:1px solid rgba(212,1
         </svg>
       </div>
       <div class="kicker">Bizi Instagram'da Takip Edin</div>
-      <h2 class="h2">Güzellikten Daha Fazlası, <em>Instagram'da</em></h2>
+      <h2 class="h2">Uygulamalarımızdan <em>Kareler</em></h2>
+      <p> Bizi takip ederek en güncel çalışmalarımızı ve kampanyalarımızı kaçırmayın.</p>
+      <div class="instagram-gallery" aria-label="Uygulamalarımızdan kareler">
+        <div class="instagram-gallery-item"><img src="WhatsApp%20Image%202026-09-23%20at%2019.10.24%20%281%29.jpeg" alt="Güzellik uygulaması 1" loading="lazy"></div>
+        <div class="instagram-gallery-item"><img src="WhatsApp%20Image%202026-09-23%20at%2019.10.24%20%282%29.jpeg" alt="Güzellik uygulaması 2" loading="lazy"></div>
+        <div class="instagram-gallery-item"><img src="WhatsApp%20Image%202026-09-23%20at%2019.10.24%20%283%29.jpeg" alt="Güzellik uygulaması 3" loading="lazy"></div>
+        <div class="instagram-gallery-item"><img src="WhatsApp%20Image%202026-09-23%20at%2019.10.24.jpeg" alt="Güzellik uygulaması 4" loading="lazy"></div>
+        <div class="instagram-gallery-item"><img src="WhatsApp%20Image%202026-09-23%20at%2019.11.01.jpeg" alt="Güzellik uygulaması 5" loading="lazy"></div>
+        <div class="instagram-gallery-item"><img src="WhatsApp%20Image%202026-09-23%20at%2019.11.02%20%281%29.jpeg" alt="Güzellik uygulaması 6" loading="lazy"></div>
+        <div class="instagram-gallery-item"><img src="WhatsApp%20Image%202026-09-23%20at%2019.11.02%20%282%29.jpeg" alt="Güzellik uygulaması 7" loading="lazy"></div>
+        <div class="instagram-gallery-item"><img src="WhatsApp%20Image%202026-09-23%20at%2019.11.02.jpeg" alt="Güzellik uygulaması 8" loading="lazy"></div>
+      </div>
       <a class="instagram-handle" href="https://www.instagram.com/gulsenisikguzellik/" target="_blank" rel="noopener">@gulsenisikguzellik</a>
-      <p>Yeni uygulamalarımızı, çalışmalarımızı ve güzellik merkezimizden güncel paylaşımları Instagram hesabımızda keşfedin.</p>
       <a class="btn btn-gold" href="https://www.instagram.com/gulsenisikguzellik/" target="_blank" rel="noopener">
         Instagram Hesabını Gör
         <svg viewBox="0 0 24 24" aria-hidden="true" style="width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round">
